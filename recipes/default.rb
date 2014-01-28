@@ -21,6 +21,11 @@ git install_dir do
 	not_if {File.exists? install_dir}
 end	
 
+gem_package "bundler" do
+	version "1.5.2"
+	action :install
+end
+
 bash "run_bundler" do
 	user 'vagrant'
 	cwd install_dir
