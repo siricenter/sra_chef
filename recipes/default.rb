@@ -29,7 +29,7 @@ end
 bash "run_bundler" do
 	user 'vagrant'
 	cwd install_dir
-	command 'bundle'
+	command 'bundle install'
 	action :run
 end
 
