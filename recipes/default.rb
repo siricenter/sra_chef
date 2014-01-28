@@ -15,7 +15,7 @@ packages.each do |program|
 end
 
 git install_dir do
-	repository "https://github.com/siricenter/sra"
+	repository "git@github.com:siricenter/sra.git"
 	action :sync
 	user "vagrant"
 	not_if {File.exists? install_dir}
