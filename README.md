@@ -1,23 +1,15 @@
 sra Cookbook
 ============
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+Deploys the SRA application to a server
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
 #### packages
-- `toaster` - sra needs toaster to brown your bagel.
+- `git` - sra needs git to deploy
 
 Attributes
 ----------
-TODO: List you cookbook attributes here.
-
-e.g.
+None, but leaving the example text here for reference in case that changes in the future.
 #### sra::default
 <table>
   <tr>
@@ -37,10 +29,9 @@ e.g.
 Usage
 -----
 #### sra::default
-TODO: Write usage instructions for each cookbook.
-
-e.g.
-Just include `sra` in your node's `run_list`:
+If deploying for development, just include `sra` in your node's `run_list`
+If deploying for production, include `sra::production` in the `run_list`
+instead.
 
 ```json
 {
@@ -51,11 +42,17 @@ Just include `sra` in your node's `run_list`:
 }
 ```
 
+```json
+{
+  "name":"my_node",
+  "run_list": [
+    "recipe[sra::production]"
+  ]
+}
+```
+
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
@@ -65,4 +62,5 @@ e.g.
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+MIT License
+Authors: Cody Poll `<CJPoll(at)[Google's Email Service].com`
