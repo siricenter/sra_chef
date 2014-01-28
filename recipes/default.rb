@@ -38,6 +38,8 @@ end
 bash "run_server" do
 	user 'vagrant'
 	cwd install_dir
-	command 'rails s -p 8000 -d -debugger'
+	code <<-EOH
+	rails s -p 8000 -d -debugger
+	EOH
 	action :run
 end
