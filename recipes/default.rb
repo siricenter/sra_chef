@@ -27,11 +27,9 @@ gem_package "bundler" do
 end
 
 bash "run_bundler" do
-	user 'vagrant'
+	user 'root'
 	cwd install_dir
-	code <<-EOH
-	bundle
-	EOH
+	command 'bundle install'
 	action :run
 end
 
