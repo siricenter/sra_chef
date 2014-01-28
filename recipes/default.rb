@@ -29,7 +29,9 @@ end
 bash "run_bundler" do
 	user 'vagrant'
 	cwd install_dir
-	command 'bundle install'
+	code <<-EOH
+	bundle
+	EOH
 	action :run
 end
 
