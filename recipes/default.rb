@@ -8,12 +8,17 @@
 #
 
 install_dir = '/vagrant/sra'
+packages = %w(ruby ruby-dev)
+
+packages.each do |program|
+	package program
+end
 
 git install_dir do
 	repository "https://github.com/siricenter/sra"
 	action :sync
 	user "vagrant"
-	not_if {File.exists? "/"}
+	not_if {File.exists? install_dir}
 end	
 
 bash "run_bundler" do
@@ -26,6 +31,6 @@ end
 bash "run_server" do
 	user 'vagrant'
 	cwd install_dir
-	command 'rails s -p 8000 -d'
+	command 'rails s -p 8000 -d -debugger'
 	action :run
 end
