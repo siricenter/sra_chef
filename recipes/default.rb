@@ -42,5 +42,5 @@ bash "run_server" do
 	rails s -p 8000 -d -debugger
 	EOH
 	action :run
-	only_if {`ps aux | grep rail[s]` != ""}
+	not_if {`ps aux | grep rail[s]` != ""}
 end
