@@ -14,6 +14,11 @@ packages.each do |program|
 	package program
 end
 
+cookbook_file "sra_db_setup.sql" do
+	path '/home/vagrant'
+	action :create_if_missing
+end
+
 git install_dir do
 	repository "git@github.com:siricenter/sra.git"
 	action :sync
@@ -44,3 +49,14 @@ bash "run_server" do
 	action :run
 	not_if {`ps aux | grep rail[s]` != ""}
 end
+
+bash 'setup_db' do
+	user 'vagrant'
+	cwd '/home/vagrant'
+	code <<-EOH
+	mysql -uroot -p < sra_db_setup.sql
+	cd /vagrant/sra
+	rake db:migrate
+	EOH
+end
+
