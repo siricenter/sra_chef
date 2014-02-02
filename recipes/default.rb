@@ -8,7 +8,7 @@
 #
 
 install_dir = '/vagrant/sra'
-packages = %w(ruby ruby-dev nodejs)
+packages = %w(ruby ruby-dev)
 
 packages.each do |program|
 	package program
