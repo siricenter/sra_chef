@@ -15,7 +15,7 @@ packages.each do |program|
 end
 
 cookbook_file "sra_db_setup.sql" do
-	path '/home/vagrant'
+	path '/home/vagrant/sra_db_setup.sql'
 	source 'sra_db_setup.sql'
 end
 
