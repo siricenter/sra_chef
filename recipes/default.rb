@@ -54,7 +54,7 @@ bash 'setup_db' do
 	user 'vagrant'
 	cwd '/home/vagrant'
 	code <<-EOH
-	mysql -uroot -p < sra_db_setup.sql
+	mysql -uroot < sra_db_setup.sql
 	cd /vagrant/sra
 	rake db:migrate
 	EOH
