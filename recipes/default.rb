@@ -17,7 +17,6 @@ end
 cookbook_file "sra_db_setup.sql" do
 	path '/home/vagrant'
 	source 'sra_db_setup.sql'
-	action :create_if_missing
 end
 
 git install_dir do
