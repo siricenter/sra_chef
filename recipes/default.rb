@@ -50,12 +50,18 @@ bash "run_server" do
 	not_if {`ps aux | grep rail[s]` != ""}
 end
 
-bash 'setup_db' do
+bash 'create_db' do
 	user 'vagrant'
 	cwd '/home/vagrant'
 	code <<-EOH
 	mysql -uroot < sra_db_setup.sql
-	cd /vagrant/sra
+	EOH
+end
+
+bash 'run_migrations' do
+	user 'vagrant'
+	cwd '/vagrant/sra'
+	code <<-EOH
 	rake db:migrate
 	EOH
 end
