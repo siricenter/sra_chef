@@ -44,7 +44,7 @@ bash "run_server" do
 	user 'vagrant'
 	cwd install_dir
 	code <<-EOH
-	rails s -p 8000 -d -debugger
+	rails s -p 8000 -d
 	EOH
 	action :run
 	not_if {`ps aux | grep rail[s]` != ""}
