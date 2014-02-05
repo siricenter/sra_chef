@@ -23,6 +23,7 @@ git install_dir do
 	repository "git@github.com:siricenter/sra.git"
 	action :sync
 	user "vagrant"
+	revision :master
 	not_if {File.exists? install_dir}
 end	
 
