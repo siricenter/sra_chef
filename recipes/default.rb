@@ -9,11 +9,6 @@
 
 install_dir = '/vagrant/sra'
 
-cookbook_file "sra_db_setup.sql" do
-	path '/home/vagrant/sra_db_setup.sql'
-	source 'sra_db_setup.sql'
-end
-
 git install_dir do
 	repository "git@github.com:siricenter/sra.git"
 	action :sync
