@@ -8,11 +8,6 @@
 #
 
 install_dir = '/vagrant/sra'
-packages = %w(ruby ruby-dev)
-
-packages.each do |program|
-	package program
-end
 
 cookbook_file "sra_db_setup.sql" do
 	path '/home/vagrant/sra_db_setup.sql'
@@ -28,7 +23,7 @@ git install_dir do
 end	
 
 gem_package "bundler" do
-	version "1.5.2"
+	version "1.7.2"
 	action :install
 end
 
@@ -51,19 +46,10 @@ bash "run_server" do
 	not_if {`ps aux | grep rail[s]` != ""}
 end
 
-bash 'create_db' do
+bash 'setup_db' do
 	user 'vagrant'
 	cwd '/home/vagrant'
 	code <<-EOH
-	mysql -uroot < sra_db_setup.sql
+	rake db:reset
 	EOH
 end
-
-bash 'run_migrations' do
-	user 'vagrant'
-	cwd '/vagrant/sra'
-	code <<-EOH
-	rake db:migrate
-	EOH
-end
-
