@@ -22,6 +22,14 @@ gem_package "bundler" do
 	action :install
 end
 
+bash 'setup_db' do
+	user 'vagrant'
+	cwd '/home/vagrant'
+	code <<-EOH
+	rake db:reset
+	EOH
+end
+
 bash "run_bundler" do
 	user 'vagrant'
 	cwd install_dir
@@ -39,12 +47,4 @@ bash "run_server" do
 	EOH
 	action :run
 	not_if {`ps aux | grep rail[s]` != ""}
-end
-
-bash 'setup_db' do
-	user 'vagrant'
-	cwd '/home/vagrant'
-	code <<-EOH
-	rake db:reset
-	EOH
 end
