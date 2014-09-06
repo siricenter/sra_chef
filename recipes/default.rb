@@ -23,7 +23,7 @@ gem_package "bundler" do
 end
 
 bash "run_bundler" do
-	user 'root'
+	user 'vagrant'
 	cwd install_dir
 	code <<-EOH
 	bundle install
