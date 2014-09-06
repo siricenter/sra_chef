@@ -1,5 +1,0 @@
-DROP DATABASE IF EXISTS sra_development;
-CREATE DATABASE sra_development;
-
-DROP DATABASE IF EXISTS sra_test;
-CREATE DATABASE sra_test;
