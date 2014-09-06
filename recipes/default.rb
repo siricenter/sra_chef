@@ -24,7 +24,7 @@ end
 
 bash 'setup_db' do
 	user 'vagrant'
-	cwd '/home/vagrant'
+	cwd '/vagrant/sra'
 	code <<-EOH
 	rake db:reset
 	EOH
