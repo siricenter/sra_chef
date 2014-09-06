@@ -1,4 +1,4 @@
-name             'sra'
+name             'sra_chef'
 maintainer       'Siri'
 maintainer_email 'CJPoll@gmail.com'
 license          'All rights reserved'
