@@ -9,6 +9,20 @@
 
 install_dir = '/vagrant/sra'
 
+bash 'trust_github' do
+	user 'vagrant'
+	cwd '/vagrant/sra'
+	code <<-EOH
+	 if [[ ! -a /home/vagrant/.ssh/known_hosts   ]]; then
+		 echo "Add github.com to known_hosts"
+		 touch /home/vagrant/.ssh/known_hosts && \
+		 ssh-keyscan -H github.com >> /home/vagrant/.ssh/known_hosts && \
+		 chmod 600 /home/vagrant/.ssh/known_hosts && \
+		 chown vagrant /home/vagrant/.ssh/known_hosts
+	 fi
+	EOH
+end
+
 git install_dir do
 	repository "git@github.com:siricenter/sra.git"
 	action :sync
