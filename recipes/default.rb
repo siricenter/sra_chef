@@ -29,6 +29,7 @@ bash 'create_/vagrant' do
 	code <<-EOH
 	if [ ! -d /vagrant ]; then
 		mkdir /vagrant
+		chown "vagrant" "/vagrant"
 	fi
 	EOH
 end
