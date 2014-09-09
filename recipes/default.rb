@@ -8,6 +8,7 @@
 #
 
 install_dir = '/vagrant/sra'
+ruby_version = '2.0.0'
 
 bash 'trust_github' do
 	user 'vagrant'
@@ -51,6 +52,7 @@ bash 'setup_db' do
 	user 'vagrant'
 	cwd '/vagrant/sra'
 	code <<-EOH
+	rvm use #{ruby_version}
 	rake db:create
 	rake db:reset
 	EOH
