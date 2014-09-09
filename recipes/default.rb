@@ -11,7 +11,7 @@ install_dir = '/vagrant/sra'
 
 bash 'trust_github' do
 	user 'vagrant'
-	cwd '/vagrant/sra'
+	cwd '/vagrant'
 	code <<-EOH
 	 if [[ ! -a /home/vagrant/.ssh/known_hosts   ]]; then
 		 echo "Add github.com to known_hosts"
