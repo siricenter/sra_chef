@@ -24,7 +24,7 @@ bash 'trust_github' do
 end
 
 bash 'create_/vagrant' do
-	user 'vagrant'
+	user 'root'
 	cwd '/home/vagrant'
 	code <<-EOH
 	if [ ! -d /vagrant ]; then
