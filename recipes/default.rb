@@ -23,6 +23,16 @@ bash 'trust_github' do
 	EOH
 end
 
+bash 'create_/vagrant' do
+	user 'vagrant'
+	cwd '/home/vagrant'
+	code <<-EOH
+	if [ ! -d /vagrant ]; then
+		mkdir /vagrant
+	fi
+	EOH
+end
+
 git install_dir do
 	repository "git@github.com:siricenter/sra.git"
 	action :sync
