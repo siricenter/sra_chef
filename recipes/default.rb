@@ -47,7 +47,6 @@ bash "run_bundler" do
 	user 'root'
 	cwd install_dir
 	code <<-EOH
-	rvm use #{ruby_version};
 	gem install bundler;
 	bundle install;
 	EOH
