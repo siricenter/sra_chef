@@ -43,16 +43,12 @@ git install_dir do
 	not_if {File.exists? install_dir}
 end	
 
-gem_package "bundler" do
-	version "1.7.2"
-	action :install
-end
-
 bash "run_bundler" do
 	user 'root'
 	cwd install_dir
 	code <<-EOH
 	rvm use #{ruby_version};
+	gem install bundler;
 	bundle install;
 	EOH
 	action :run

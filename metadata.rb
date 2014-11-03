@@ -4,7 +4,7 @@ maintainer_email 'CJPoll@gmail.com'
 license          'All rights reserved'
 description      'Installs/Configures sra'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.29'
+version          '0.1.30'
 
 depends 'git'
 
