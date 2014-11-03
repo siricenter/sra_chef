@@ -48,30 +48,32 @@ gem_package "bundler" do
 	action :install
 end
 
-bash 'setup_db' do
-	user 'vagrant'
-	cwd '/vagrant/sra'
-	code <<-EOH
-	rvm use #{ruby_version}
-	rake db:create
-	rake db:reset
-	EOH
-end
-
 bash "run_bundler" do
-	user 'vagrant'
+	user 'root'
 	cwd install_dir
 	code <<-EOH
-	bundle install
+	rvm use #{ruby_version};
+	bundle install;
 	EOH
 	action :run
 end
 
+bash 'setup_db' do
+	user 'root'
+	cwd '/vagrant/sra'
+	code <<-EOH
+	rvm use #{ruby_version};
+	rake db:create;
+	rake db:reset;
+	EOH
+end
+
 bash "run_server" do
-	user 'vagrant'
+	user 'root'
 	cwd install_dir
 	code <<-EOH
-	rails s -p 8000 -d
+	rvm use #{ruby_version};
+	rails s -p 8000 -d;
 	EOH
 	action :run
 	not_if {`ps aux | grep rail[s]` != ""}
